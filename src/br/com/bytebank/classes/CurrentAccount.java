@@ -3,9 +3,9 @@ package br.com.bytebank.classes;
 import br.com.bytebank.enums.BalanceLimits;
 import br.com.bytebank.enums.Taxs;
 import br.com.bytebank.exceptions.SaldoInsuficienteException;
-import br.com.bytebank.interfaces.Tributavel;
+import br.com.bytebank.interfaces.Taxable;
 
-public class CurrentAccount extends Account implements Tributavel {
+public class CurrentAccount extends Account implements Taxable {
 
 	public CurrentAccount(int agencia, int numero, Client cliente) {
 		super(agencia, numero, cliente);
@@ -13,7 +13,15 @@ public class CurrentAccount extends Account implements Tributavel {
 
 	@Override
 	public void deposit(double value) {
-		this.balance += value;
+
+		try {
+			if (value < 0)
+				throw new IllegalArgumentException("O valor para o depósito está incorreto.");
+			this.balance += value;
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
+
 	}
 
 	@Override

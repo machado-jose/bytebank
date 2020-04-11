@@ -15,7 +15,7 @@ public class TransferTest {
 		CurrentAccount c1 = new CurrentAccount(6130, 124578, alberto);
 		CurrentAccount c2 = new CurrentAccount(6130, 521458, belchior);
 
-		c1.deposit(250);
+		c1.deposit(-1);
 		c2.deposit(100);
 
 		// Realizando uma transferencia
