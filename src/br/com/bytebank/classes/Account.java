@@ -5,21 +5,21 @@ import br.com.bytebank.exceptions.SaldoInsuficienteException;
 public abstract class Account {
 
 	protected double balance;
-	private int branch;
+	private int numberBranch;
 	private int accountNumber;
 	private Client client;
 	private static int clientTotal;
 
-	public Account(int branch, int accountNumber, Client client) {
+	public Account(int numberBranch, int accountNumber, Client client) {
 
 		try {
 
-			if (branch < 0 || accountNumber < 0)
+			if (numberBranch < 0 || accountNumber < 0)
 				throw new IllegalArgumentException("Número da agência e/ou número da conta estão incorretos.");
 			if (client.getCpf() == null)
 				throw new IllegalArgumentException("O cliente não existe.");
 
-			this.branch = branch;
+			this.numberBranch = numberBranch;
 			this.accountNumber = accountNumber;
 			this.client = client;
 			clientTotal++;
@@ -40,8 +40,8 @@ public abstract class Account {
 		this.balance = balance;
 	}
 
-	public void setBranch(int branch) {
-		this.branch = branch;
+	public void setBranch(int numberBranch) {
+		this.numberBranch = numberBranch;
 	}
 
 	public void accountNumber(int accountNumber) {
@@ -73,7 +73,7 @@ public abstract class Account {
 		if (this.accountNumber == 0) {
 			return "Esta conta não existe.";
 		} else {
-			return "Agência: " + this.branch + "\nConta: " + this.accountNumber;
+			return "Agência: " + this.numberBranch + "\nConta: " + this.accountNumber;
 		}
 	}
 }

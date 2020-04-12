@@ -7,8 +7,8 @@ import br.com.bytebank.interfaces.Taxable;
 
 public class CurrentAccount extends Account implements Taxable {
 
-	public CurrentAccount(int agencia, int numero, Client cliente) {
-		super(agencia, numero, cliente);
+	public CurrentAccount(int branch, int accountNumber, Client client) {
+		super(branch, accountNumber, client);
 	}
 
 	@Override
