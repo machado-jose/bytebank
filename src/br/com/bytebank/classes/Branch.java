@@ -79,6 +79,10 @@ public class Branch {
 
 	@Override
 	public String toString() {
-		return "Agência: " + this.numberBranch;
+		if (this.numberBranch == 0 || this.address == null) {
+			return "Agência inválida.";
+		} else {
+			return "Agência: " + this.numberBranch;
+		}
 	}
 }
